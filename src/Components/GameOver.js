@@ -1,16 +1,29 @@
-import React, {useContext} from "react";
-import AppContext from "../App";
+import React, { useContext } from "react";
+import { AppContext } from "../App";
 
 function GameOver() {
-
-    const {gameOver, currAttempt, correctWord, board, setBoard, onSelectLetter, onDelete} = useContext(AppContext)
+  const {
+    board,
+    setBoard,
+    currAttempt,
+    gameOver,
+    onSelectLetter,
+    correctWord,
+    onDelete,
+  } = useContext(AppContext);
   return (
     <div className="gameOver">
-        <h3>{gameOver.guessedWord ? "You Won!" : "You Lost!"}</h3>
-        <h1>Correct: {correctWord}</h1>
-        {gameOver.guessedWord && (<h3>You guessed in {currAttempt.attempt} attempts</h3>)}
+      <h3>
+        {gameOver.guessedWord
+          ? "You Won!"
+          : "You lost!"}
+      </h3>
+      <h1>Correct Word: {correctWord}</h1>
+      {gameOver.guessedWord && (
+        <h3>You guessed in {currAttempt.attempt} attempts</h3>
+      )}
     </div>
-  )
+  );
 }
 
 export default GameOver;

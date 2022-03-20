@@ -19,6 +19,8 @@ function App() {
 
   const [gameOver, setGameOver] = useState({gameOver: false, guessedWord: false,})
 
+
+
   useEffect(() =>{
 
     generateWordSet().then((words) => {
@@ -26,6 +28,8 @@ function App() {
       setCorrectWord(words.targetWord);
     });
   }, []);
+
+  
 
   const onSelectLetter = (keyVal) => {
     if(currAttempt.letterPos > 4){
@@ -38,6 +42,8 @@ function App() {
   setCurrAttempt({...currAttempt, letterPos: currAttempt.letterPos + 1});
 
   }
+
+
   const onDelete = () =>{
 
     if(currAttempt.letterPos === 0) return;
@@ -67,7 +73,7 @@ function App() {
       alert("Word is not in Dictionary");
     }
 
-    if(currWord === correctWord){
+    if((currWord + "\r").toLowerCase === correctWord){
       setGameOver({gameOver: true, guessedWord: true})
       return;
     }
